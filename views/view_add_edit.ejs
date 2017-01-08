@@ -1,0 +1,98 @@
+<%- include layouts/header.ejs %>
+
+        <div class="page-data">
+            <% if (data.length > 0) { %>
+            <% if (saveSuccess == 1) { %>
+                <div>
+                    <span style="color: red">Updated Success !</span>
+                </div>                    
+            <% } %>
+            <form method="post" action="/members/edit/<%=data[0].id%>">
+                <table cellpadding="11">
+                <tr>
+                    <td class="label">Member login name</td>
+                    <td> 
+                        <input type="text" name="member_login_name" value="<%=data[0].member_login_name%>" >
+                    </td>
+                 </tr>
+                 <tr>
+                    <td class="label">Member display name</td>
+                    <td>
+                        <input type="text" name="member_name" value="<%=data[0].member_name%>" >
+                        <!--<textarea name="address" required cols="30" rows="5"><%=data[0].address%></textarea>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Member mail</td>
+                    <td> 
+                        <input type="text" value="<%=data[0].member_mail%>" name="member_mail" >
+                    </td>
+                 </tr>
+                  <tr>
+                    <td class="label">Member new pasworld</td>
+                    <td>
+                        <input type="text" id="member_new_passworld" name="member_new_passworld" >
+                    </td>
+                 </tr>
+                 <tr>
+                     <td class="label">Member renew passworld</td>
+                     <td>
+                         <input type="text" id="member_renew_passworld" name="member_renew_passworld" >
+                     </td>
+                 </tr>
+                 <tr>
+                    <td class="label"></td>
+                    <td>
+                        <input type="submit" name="submit" value="Save">
+                        <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAddMemb()">
+                    </td>
+                 </tr>
+                </table>
+            </form>
+            <% } else { %>
+                <form method="post" action="/members/add">
+                    <table cellpadding="11">
+                    <tr>
+                        <td class="label">Member login name</td>
+                        <td> 
+                            <input type="text" name="member_login_name" value="" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Member display name</td>
+                        <td>
+                            <input type="text" name="member_name" value="" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Member mail</td>
+                        <td> 
+                            <input type="text" value="" name="member_mail" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Member pasworld</td>
+                        <td>
+                            <input type="text" id="member_new_passworld" name="member_new_passworld" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Member repassworld</td>
+                        <td>
+                            <input type="text" id="member_renew_passworld" name="member_renew_passworld" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"></td>
+                        <td>
+                            <input type="submit" name="submit" value="Save">
+                            <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAddMemb()">
+                        </td>
+                    </tr>
+                    </table>
+                </form>
+
+            <% } %>
+        </div>
+        
+<%- include layouts/footer.ejs %>
